@@ -1,2 +1,0 @@
-# Bracket
-Double elimination bracket.
