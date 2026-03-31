@@ -113,9 +113,14 @@
                 const r3 = m.frames.reduce((s,f)=>s+getR(f.p3), 0) + getR(m.currF.p3);
                 const r4 = m.frames.reduce((s,f)=>s+getR(f.p4), 0) + getR(m.currF.p4);
 
+                // Check for Final status
+                const statusLabel = m.isFinal ? "MATCH FINAL" : `Match ${m.mid} • Frame ${m.frames.length + 1}`;
+                const cardClass = m.isFinal ? "border-amber-500 shadow-[0_0_25px_rgba(245,158,11,0.4)]" : "";
+
                 html += createMatchCard("Tournament Bracket", m.t1.name, m.t2.name, sc1 + m.h1, sc2 + m.h2, [
                     {n: m.p1n, r: r1}, {n: m.p2n, r: r2}, {n: m.p3n, r: r3}, {n: m.p4n, r: r4}
-                ], `Match ${m.mid} • Frame ${m.frames.length + 1}`, false);
+                ], statusLabel, false, cardClass);
+            });
             });
 
             container.innerHTML = html;
